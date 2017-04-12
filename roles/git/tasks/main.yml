@@ -1,0 +1,3 @@
+- copy: src=gitconfig
+        dest=~/.gitconfig
+        mode=0444

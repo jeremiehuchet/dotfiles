@@ -1,0 +1,6 @@
+- copy: src=config
+        dest=~/.config/i3/config
+        mode=0444
+- copy: src=i3status.conf
+        dest=~/.i3status.conf
+        mode=0444

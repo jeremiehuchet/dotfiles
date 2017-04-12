@@ -1,0 +1,8 @@
+- copy: src=configuration.nix
+        dest=/etc/nixos/configuration.nix
+        mode=0444
+  become: true
+
+- copy: src=user-config.nix
+        dest=~/.config/nixpkgs/config.nix
+        mode=0444
