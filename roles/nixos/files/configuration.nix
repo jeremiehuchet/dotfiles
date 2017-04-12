@@ -121,16 +121,22 @@
 
   services.xserver.multitouch.enable = true;
 
-  services.xserver.synaptics.additionalOptions = ''
-    Option "VertScrollDelta" "-100"
-    Option "HorizScrollDelta" "-100"
-  '';
-  services.xserver.synaptics.enable = true;
-  services.xserver.synaptics.tapButtons = true;
-  services.xserver.synaptics.fingersMap = [ 0 0 0 ];
-  services.xserver.synaptics.buttonsMap = [ 1 3 2 ];
-  services.xserver.synaptics.twoFingerScroll = true;
-
+  services.xserver.synaptics = {
+    enable = true;
+    tapButtons = false;
+    fingersMap = [ 0 0 0 ];
+    buttonsMap = [ 1 3 2 ];
+    twoFingerScroll = true;
+    palmDetect = false;
+    accelFactor = "0.001";
+    additionalOptions = ''
+      Option "VertScrollDelta" "-100"
+      Option "HorizScrollDelta" "-100"
+      Option "FingerLow" "40"
+      Option "FingerHigh" "70"
+      Option "Resolution" "270"
+    '';
+  };
   services.xserver.windowManager.i3.enable = true;
 
   security.sudo.enable = true;
