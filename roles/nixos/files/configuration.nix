@@ -103,6 +103,8 @@
 
   powerManagement.enable = true;
 
+  programs.vim.defaultEditor = true;
+
   programs.light.enable = true;
 
   services.openssh.enable = true;
