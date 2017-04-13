@@ -1,1 +1,2 @@
-- echo: Consider running "nixos-rebuild switch"
+- name: nixos-rebuild switch
+  command: echo Consider running "nixos-rebuild switch"

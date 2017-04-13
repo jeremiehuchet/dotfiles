@@ -23,6 +23,9 @@
     "dm_snapshot"
   ];
   boot.cleanTmpDir = true;
+  boot.extraModulePackages = [
+    pkgs.linuxPackages.hidapplepatched
+  ];
   boot.extraModprobeConfig = ''
     options libata.force=noncq
     options snd_hda_intel index=0 model=intel-mac-auto id=PCM
@@ -96,6 +99,7 @@
       extraConfig = ''
         THUNDERBOLT m
       '';
+      hidapplepatched = pkgs.callPackage ./pkgs/hidapplepatched.nix { };
     };
     customGit = pkgs.git.override {
       svnSupport = true;
