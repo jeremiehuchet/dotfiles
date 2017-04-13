@@ -28,7 +28,9 @@
     options snd_hda_intel index=0 model=intel-mac-auto id=PCM
     options snd_hda_intel index=! model=intel-mac-auto id=HDMI
     options snd_hda_intel model=mbp101
-    options hid-apple fnmode=2
+    options hid_apple fnmode=2
+    options hid_apple isolayout=0
+    options hid_apple swap_fnleftctrl=1
   '';
 
   fileSystems."/".options = [ "noatime" "nodiratime" "discard" ];
@@ -129,6 +131,7 @@
     palmDetect = false;
     accelFactor = "0.001";
     additionalOptions = ''
+      Option "SHMConfig" "on"
       Option "VertScrollDelta" "-100"
       Option "HorizScrollDelta" "-100"
       Option "Resolution" "370"

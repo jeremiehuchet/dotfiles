@@ -1,3 +1,1 @@
-- name: nixos-rebuild switch
-  command: nixos-rebuild switch
-  become: true
+- echo: Consider running "nixos-rebuild switch"
