@@ -124,17 +124,14 @@
   services.xserver.synaptics = {
     enable = true;
     tapButtons = false;
-    fingersMap = [ 0 0 0 ];
-    buttonsMap = [ 1 3 2 ];
+    #buttonsMap = [ 1 3 2 ];
     twoFingerScroll = true;
     palmDetect = false;
     accelFactor = "0.001";
     additionalOptions = ''
       Option "VertScrollDelta" "-100"
       Option "HorizScrollDelta" "-100"
-      Option "FingerLow" "40"
-      Option "FingerHigh" "70"
-      Option "Resolution" "270"
+      Option "Resolution" "370"
     '';
   };
   services.xserver.windowManager.i3.enable = true;
