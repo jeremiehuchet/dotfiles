@@ -1,9 +1,0 @@
-- copy: src=configuration.nix
-        dest=/etc/nixos/configuration.nix
-        mode=0444
-  become: true
-  notify: nixos-rebuild switch
-
-- copy: src=user-config.nix
-        dest=~/.config/nixpkgs/config.nix
-        mode=0444
