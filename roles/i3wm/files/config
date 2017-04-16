@@ -36,7 +36,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+a kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec /nix/store/b5a3bs087cm2qg616cbrzd0wx4jk61ij-dmenu-4.6/bin/dmenu_run
+bindsym $mod+d exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -153,5 +153,5 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         position top
-        status_command /nix/store/fi2xfxw0qa2l5bf738xab3ksdc96wn79-i3status-2.11/bin/i3status
+        status_command i3status
 }
