@@ -1,3 +1,4 @@
-- copy: src=zshrc
-        dest=~/.zshrc
-        mode=0444
+- template:
+    src: zshrc
+    dest: ~/.zshrc
+    mode: 0444

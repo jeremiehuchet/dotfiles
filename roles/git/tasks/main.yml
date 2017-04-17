@@ -1,3 +1,4 @@
-- copy: src=gitconfig
-        dest=~/.gitconfig
-        mode=0444
+- template:
+    src: gitconfig
+    dest: ~/.gitconfig
+    mode: 0444
