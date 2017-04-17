@@ -1,3 +1,3 @@
 #!/bin/sh
 
-ansible-playbook configure.yml --ask-sudo-pass
+ansible-playbook configure.yml
