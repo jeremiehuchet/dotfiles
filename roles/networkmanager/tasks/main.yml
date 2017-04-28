@@ -1,0 +1,19 @@
+- package:
+    name: networkmanager
+    state: installed
+  become: yes
+
+- service:
+    name: NetworkManager
+    state: started
+    enabled: yes
+  become: yes
+
+- template:
+    src: "{{ item }}"
+    dest: /etc/polkit-1/rules.d/{{ item  }}
+    mode: 0444
+  with_items:
+  - 10-network.rules
+  - 50-org.freedesktop.NetworkManager.rules
+  become: yes

@@ -1,0 +1,12 @@
+- package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+  - git
+  - tk # add support for git gui
+  become: yes
+
+- template:
+    src: git/gitconfig
+    dest: ~/.gitconfig
+    mode: 0444

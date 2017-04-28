@@ -1,6 +1,7 @@
 - hosts: 127.0.0.1
   connection: local
   roles:
-  - i3wm
-  - git
-  - zsh
+  - system_packages
+  - networkmanager
+  - desktop_environment
+#  - zsh

@@ -1,9 +1,0 @@
-- template:
-    src: config
-    dest: ~/.config/i3/config
-    mode: 0444
-
-- template:
-    src: i3status.conf
-    dest: ~/.config/i3/i3status.conf
-    mode: 0444

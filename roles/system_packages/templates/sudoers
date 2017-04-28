@@ -1,0 +1,7 @@
+# {{ generated_tag }}
+
+Defaults env_reset, timestamp_timeout=10
+
+root ALL=(ALL) ALL
+%wheel ALL=(ALL) ALL
+

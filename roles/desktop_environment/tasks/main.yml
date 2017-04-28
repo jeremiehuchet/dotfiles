@@ -1,0 +1,55 @@
+- include: git.yml
+
+- package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+  - nodm
+  - i3-wm
+  - i3lock
+  - libglvnd # dep for libgl
+  - terminator
+  - xf86-video-intel
+  - xorg-server
+  - xorg-server-utils
+  become: yes
+
+- lineinfile:
+    path: /etc/nodm.conf
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+  with_items:
+  - { regexp: '^NODM_USER=',     line: "NODM_USER='{{ username }}'" }
+  - { regexp: '^NODM_XSESSION=', line: "NODM_XSESSION='/home/{{ username }}/.xinitrc'" }
+  become: yes
+
+- copy:
+    src: pam.d/nodm
+    dest: /etc/pam.d/nodm
+
+- service:
+    name: nodm
+    enabled: yes
+  become: yes
+
+- copy:
+    src: xinitrc
+    dest: ~/.xinitrc
+    mode: 0550
+
+- file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+  - ~/.config
+  - ~/.config/i3
+
+- template:
+    src: config
+    dest: ~/.config/i3/config
+    mode: 0444
+
+- template:
+    src: i3status.conf
+    dest: ~/.config/i3/i3status.conf
+    mode: 0444
