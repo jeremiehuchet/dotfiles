@@ -1,0 +1,73 @@
+- name: install xorg packages
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+  - nodm
+  - libglvnd # dep for libgl
+  - xf86-video-intel
+  - xorg-server
+  - xorg-server-utils
+  become: yes
+
+- name: check AUR package 'fft-font-awesome' is installed
+  stat:
+    path: /usr/share/fonts/TTF/fontawesome-webfont.ttf
+  register: fontawesome
+  failed_when: fontawesome.stat.exists == False
+
+- name: install fonts
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+  - xorg-fonts-type1
+  - ttf-dejavu
+  - artwiz-fonts
+  - font-bh-ttf
+  - font-bitstream-speedo
+  - gsfonts
+  - sdl_ttf
+  - ttf-bitstream-vera
+  - ttf-cheapskate
+  - ttf-liberation
+  - ttf-freefont
+  - ttf-arphic-uming
+  - ttf-baekmuk
+  become: yes
+
+- name: configure xorg
+  template:
+    src: xorg/{{ item }}
+    dest: /etc/X11/xorg.conf.d/{{ item }}
+  with_items:
+  - 10-keyboard-layout.conf
+  - 10-keyboard-terminate.conf
+  become: yes
+
+- name: configure nodm
+  lineinfile:
+    path: /etc/nodm.conf
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+  with_items:
+  - { regexp: '^NODM_USER=',     line: "NODM_USER='{{ username }}'" }
+  - { regexp: '^NODM_XSESSION=', line: "NODM_XSESSION='/home/{{ username }}/.xinitrc'" }
+  become: yes
+
+- name: configure nodm pam.d
+  copy:
+    src: pam.d/nodm
+    dest: /etc/pam.d/nodm
+
+- name: enable nodm service
+  service:
+    name: nodm
+    enabled: yes
+  become: yes
+
+- name: configure Xresources
+  template:
+    src: xorg/Xresources
+    dest: ~/.Xresources
+    mode: 0444

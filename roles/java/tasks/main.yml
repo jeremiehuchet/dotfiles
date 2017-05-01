@@ -1,0 +1,42 @@
+- name: install oracle jdk7
+  shell: 'curl -L -H "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/7u79-b15/jdk-7u79-linux-x64.tar.gz | tar -zx -C /opt'
+  args:
+    creates: /opt/jdk1.7.0_79/bin/java
+  become: yes
+
+- name: install oracle jdk8
+  shell: 'curl -L -H "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131-linux-x64.tar.gz | tar -zx -C /opt'
+  args:
+    creates: /opt/jdk1.8.0_131/bin/java
+  become: yes
+
+- name: configure default jdk
+  file:
+    src: /opt/jdk1.8.0_131
+    dest: /opt/jdk
+    state: link
+  become: yes
+
+- name: install maven 3.3
+  unarchive:
+    src: https://archive.apache.org/dist/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz
+    dest: /opt
+    creates: /opt/apache-maven-3.5.0/bin/mvn
+    remote_src: yes
+  become: yes
+
+- name: install maven 3.5
+  unarchive:
+    src: http://www-eu.apache.org/dist/maven/maven-3/3.5.0/binaries/apache-maven-3.5.0-bin.tar.gz
+    dest: /opt
+    creates: /opt/apache-maven-3.5.0/bin/mvn
+    remote_src: yes
+  become: yes
+
+- name: configure default maven
+  file:
+    src: /opt/apache-maven-3.5.0
+    dest: /opt/apache-maven
+    state: link
+  become: yes
+

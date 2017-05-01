@@ -1,0 +1,57 @@
+- name: install sensors reader
+  package:
+    name: lm_sensors
+    state: present
+  become: yes
+
+- name: check AUR package 'mbpfan-git' is installed
+  stat:
+    path: /usr/bin/mbpfan
+  register: mbpfan
+  failed_when: mbpfan.stat.exists == False
+
+- name: configure fan control service
+  template:
+    src: mbpfan.conf
+    dest: /etc/mbpfan.conf
+    mode: 0444
+  register: mbpfan
+  become: yes
+
+- name: restart fan control service on config change
+  service:
+    name: mbpfan
+    state: restarted
+  when: mbpfan.changed
+  become: yes
+
+- name: enable fan control service
+  service:
+    name: mbpfan
+    state: started
+    enabled: yes
+  become: yes
+
+- name: install script used by udev rules to disable bluetooth and card reader
+  template:
+    src: udev/remove_ignore_usb-device.sh
+    dest: /usr/local/sbin/remove_ignore_usb-device.sh
+    mode: 0555
+  become: yes
+
+- name: disable bluetooth and card reader
+  template:
+    src: udev/{{ item }}
+    dest: /etc/udev/rules.d/{{ item }}
+    mode: 0444
+  with_items:
+    - 99-apple_cardreader.rules
+    - 99-apple_broadcom_bcm2046_bluetooth.rules
+  become: yes
+
+- name: disable systemd powerkey management
+  lineinfile:
+    path: /etc/systemd/logind.conf
+    regexp: "^#?HandlePowerKey="
+    line: "HandlePowerKey=ignore"
+  become: yes

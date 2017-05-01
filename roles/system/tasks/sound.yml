@@ -1,0 +1,12 @@
+- name: install sound utils
+  package:
+    name: alsa-utils
+    state: present
+  become: yes
+
+- name: configure sound modules
+  template:
+    src: sound/50-sound.conf
+    dest: /etc/modprobe.d/50-sound.conf
+    mode: 0444
+  become: yes

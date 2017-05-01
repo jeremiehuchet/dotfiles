@@ -1,0 +1,6 @@
+- name: configure hid apple module
+  template:
+    src: hid_apple.conf
+    dest: /etc/modprobe.d/hid_apple.conf
+    mode: 0444
+  become: yes

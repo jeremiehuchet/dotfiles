@@ -1,7 +1,9 @@
 - hosts: 127.0.0.1
   connection: local
   roles:
-  - system_packages
+  - system
+  - macbook_swith_fnleftctrl
   - networkmanager
   - desktop_environment
+  - java
 #  - zsh

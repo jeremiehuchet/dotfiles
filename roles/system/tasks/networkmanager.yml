@@ -10,7 +10,7 @@
   become: yes
 
 - template:
-    src: "{{ item }}"
+    src: "networkmanager/{{ item }}"
     dest: /etc/polkit-1/rules.d/{{ item  }}
     mode: 0444
   with_items:

@@ -1,39 +1,36 @@
-- blockinfile:
-    path: /etc/pacman.conf
-    block: |
-      [archlinuxfr]
-      SigLevel = Never
-      Server = http://repo.archlinux.fr/$arch
-    marker: "# {mark} Ansible managed block"
-  register: add_archlinuxfr_source
-  become: yes
+- include: pacman.yml
+- include: sound.yml
+- include: networkmanager.yml
+- include: powermanagement.yml
 
-- package:
-    update_cache: yes
-  when: add_archlinuxfr_source.changed
-  become: yes
-
-- package:
+- name: install system utilities
+  package:
     name: "{{ item }}"
     state: present
   with_items:
   - python-virtualenv
+  - python2-virtualenv
   - htop
+  - intel-ucode
   - iotop
   - openssh
   - yaourt
   - vim
+  - zip
+  - unzip
   - zsh
   become: yes
 
-- group:
+- name: user group
+  group:
     name: "{{ item }}"
   with_items:
   - "{{ username }}"
   - wheel
   become: yes
 
-- user:
+- name: user profile
+  user:
     name: "{{ username }}"
     uid: 1000
     shell: /bin/zsh
@@ -41,7 +38,8 @@
     groups: users,network,wheel,video,audio,power,users
   become: yes
 
-- template:
+- name: configure sudoers
+  template:
     src: sudoers
     dest: /etc/sudoers
     mode: 0440

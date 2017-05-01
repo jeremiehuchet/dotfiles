@@ -1,0 +1,21 @@
+- blockinfile:
+    path: /etc/pacman.conf
+    block: |
+      [archlinuxfr]
+      SigLevel = Never
+      Server = http://repo.archlinux.fr/$arch
+    marker: "# {mark} Ansible managed block"
+  register: add_archlinuxfr_source
+  become: yes
+
+- package:
+    update_cache: yes
+  when: add_archlinuxfr_source.changed
+  become: yes
+
+- name: configure makepkg
+  lineinfile:
+    path: /etc/makepkg.conf
+    regexp: "^#?MAKEFLAGS="
+    line: 'MAKEFLAGS="-j8"'
+  become: yes
