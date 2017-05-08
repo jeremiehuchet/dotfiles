@@ -11,11 +11,13 @@
   - python-virtualenv
   - python2-virtualenv
   - htop
+  - httpie
   - intel-ucode
   - iotop
   - openssh
   - yaourt
   - vim
+  - wget
   - zip
   - unzip
   - zsh

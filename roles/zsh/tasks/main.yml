@@ -1,4 +1,16 @@
-- template:
+- name: check AUR package 'oh-my-zsh-git' is installed
+  stat:
+    path: /usr/share/oh-my-zsh/zshrc
+  register: ohmyzshrc
+  failed_when: ohmyzshrc.stat.exists == False
+
+- name: install powerline fonts
+  package:
+    name: powerline-fonts
+    state: present
+
+- name: configure zsh
+  template:
     src: zshrc
     dest: ~/.zshrc
     mode: 0444
