@@ -2,7 +2,7 @@
 - include: git.yml
 - include: i3wm.yml
 
-- copy:
+- template:
     src: xinitrc
     dest: ~/.xinitrc
     mode: 0550
