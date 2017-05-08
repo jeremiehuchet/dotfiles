@@ -1,3 +1,5 @@
 generated_tag: "Generated file ({{ template_mtime }}), see https://github.com/jeremiehuchet/dotfiles"
 
 username: jeremie
+
+dpi: 140

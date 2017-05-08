@@ -1,6 +1,6 @@
 # {{ generated_tag }}
 
-Xft.dpi: 220
+Xft.dpi: {{ dpi }}
 Xft.autohint: 0
 Xft.lcdfilter:  lcddefault
 Xft.hintstyle:  hintfull

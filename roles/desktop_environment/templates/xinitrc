@@ -1,4 +1,4 @@
 # {{ generated_tag }}
 
-xrandr --dpi 220
+xrandr --dpi {{ dpi }}
 exec i3
