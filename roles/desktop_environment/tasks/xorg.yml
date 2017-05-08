@@ -3,7 +3,7 @@
     name: "{{ item }}"
     state: present
   with_items:
-  - nodm
+  - xdm-archlinux
   - libglvnd # dep for libgl
   - xf86-video-intel
   - xorg-server
@@ -45,24 +45,10 @@
   - 10-keyboard-terminate.conf
   become: yes
 
-- name: configure nodm
-  lineinfile:
-    path: /etc/nodm.conf
-    regexp: "{{ item.regexp }}"
-    line: "{{ item.line }}"
-  with_items:
-  - { regexp: '^NODM_USER=',     line: "NODM_USER='{{ username }}'" }
-  - { regexp: '^NODM_XSESSION=', line: "NODM_XSESSION='/home/{{ username }}/.xinitrc'" }
-  become: yes
-
-- name: configure nodm pam.d
-  copy:
-    src: pam.d/nodm
-    dest: /etc/pam.d/nodm
-
-- name: enable nodm service
+- name: enable xdm service
   service:
-    name: nodm
+    name: xdm-archlinux
+    state: started
     enabled: yes
   become: yes
 
