@@ -4,6 +4,7 @@
   with_items:
   - i3-wm
   - i3lock
+  - rofi
 
 - name: check AUR package 'py3status' is installed
   stat:
@@ -18,15 +19,23 @@
   with_items:
   - ~/.config
   - ~/.config/i3
+  - ~/.config/rofi
 
 - name: configure i3wm
   template:
-    src: config
+    src: i3/i3.config
     dest: ~/.config/i3/config
     mode: 0444
 
 - name: configure py3status
   template:
-    src: i3status.conf
+    src: i3/i3status.conf
     dest: ~/.config/i3/i3status.conf
     mode: 0444
+
+- name: configure rofi
+  template:
+    src: i3/rofi.config
+    dest: ~/.config/rofi/config
+    mode: 0444
+
