@@ -2,7 +2,7 @@
   connection: local
   roles:
   - system
-  - macbook_swith_fnleftctrl
+  - macbook_keyboard_fixes
   - networkmanager
   - desktop_environment
   - java
