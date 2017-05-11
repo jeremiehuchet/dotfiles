@@ -4,3 +4,9 @@
     dest: /etc/modprobe.d/hid_apple.conf
     mode: 0444
   become: yes
+
+- name: customize keymap
+  template:
+    src: Xmodmap
+    dest: ~/.Xmodmap
+    mode: 0444
