@@ -1,4 +1,3 @@
-# {{ generated_tag }}
 keymaps 0-2,4,6,8,12
 include "azerty-layout"
 include "linux-with-alt-and-altgr"
@@ -61,7 +60,6 @@ keycode  42 = Shift
 keycode  43 = asterisk         numbersign      
 	control keycode  43 = Control_backslash
 	alt     keycode  43 = Meta_backslash  
-keycode  49 = less greater less greater bar brokenbar bar
 keycode  50 = comma            question      
 keycode  51 = semicolon        period          
 	alt     keycode  51 = Meta_comma      
@@ -79,4 +77,3 @@ keycode  58 = Caps_Lock
 keycode  86 = less             greater          bar             
 	alt     keycode  86 = Meta_less       
 keycode  97 = Control         
-keycode 124 = Delete NoSymbol Delete
