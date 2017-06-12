@@ -5,8 +5,17 @@
     mode: 0444
   become: yes
 
-- name: customize keymap
+- name: install macbookpro keymap
   template:
-    src: Xmodmap
-    dest: ~/.Xmodmap
+    src: fr-macbookpro.map
+    dest: /usr/share/kbd/keymaps/i386/azerty/fr-macbookpro.map
     mode: 0444
+  become: yes
+
+- name: enable macbookpro keymap
+  lineinfile:
+    path: /etc/vconsole.conf
+    regexp: '^KEYMAP='
+    line: 'KEYMAP=fr-macbookpro'
+    state: present
+  become: yes
