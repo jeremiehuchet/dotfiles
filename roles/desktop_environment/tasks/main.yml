@@ -1,6 +1,7 @@
 - include: xorg.yml
 - include: git.yml
 - include: i3wm.yml
+- include: intellij.yml
 
 - template:
     src: xinitrc
