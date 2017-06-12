@@ -3,7 +3,7 @@
     name: "{{ item }}"
   with_items:
   - i3-wm
-  - i3lock
+  - i3lock-blur # install from aur
   - rofi
 
 - name: check AUR package 'py3status' is installed
