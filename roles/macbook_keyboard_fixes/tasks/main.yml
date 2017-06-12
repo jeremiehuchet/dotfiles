@@ -10,3 +10,9 @@
     src: Xmodmap
     dest: ~/.Xmodmap
     mode: 0444
+
+- name: check AUR package 'kbdlight' is installed
+  stat:
+    path: /usr/bin/kbdlight
+  register: kbdlight
+  failed_when: kbdlight.stat.exists == False
