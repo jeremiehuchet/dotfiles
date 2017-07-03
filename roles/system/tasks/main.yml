@@ -2,6 +2,7 @@
 - include: sound.yml
 - include: networkmanager.yml
 - include: powermanagement.yml
+- include: misc.yml
 
 - name: install system utilities
   package:
