@@ -2,15 +2,19 @@
   package:
     name: "{{ item }}"
   with_items:
+  - python-pyalsaaudio # For the alsa module.,
+  - python-dbus        # For the thunderbird or now_playing modules.,
+  - python-psutil      # For the mem, membar or network_traffic modules.,
+  - python-netifaces   # For the network or wireless modules.,
   - i3-wm
   - i3lock-blur # install from aur
   - rofi
 
 - name: check AUR package 'py3status' is installed
   stat:
-    path: /usr/bin/py3status
-  register: py3status
-  failed_when: py3status.stat.exists == False
+    path: /usr/bin/i3pystatus
+  register: i3pystatus
+  failed_when: i3pystatus.stat.exists == False
 
 - name: create i3 configuration directories
   file:
@@ -27,10 +31,10 @@
     dest: ~/.config/i3/config
     mode: 0444
 
-- name: configure py3status
+- name: configure i3pystatus
   template:
-    src: i3/i3status.conf
-    dest: ~/.config/i3/i3status.conf
+    src: i3/pystatus.py
+    dest: ~/.config/i3/pystatus.py
     mode: 0444
 
 - name: configure rofi
