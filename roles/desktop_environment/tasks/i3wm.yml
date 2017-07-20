@@ -1,16 +1,21 @@
+- name: check aur packages are installed
+  package:
+    name: "{{ item }}"
+  with_items:
+  - acpi
+  - cower
+  - i3lock-blur
+  - py3status
+  - python-tzlocal
+
 - name: install i3 packages
   package:
     name: "{{ item }}"
   with_items:
   - i3-wm
-  - i3lock-blur # install from aur
+  - python-pytz
   - rofi
-
-- name: check AUR package 'py3status' is installed
-  stat:
-    path: /usr/bin/py3status
-  register: py3status
-  failed_when: py3status.stat.exists == False
+  become: yes
 
 - name: create i3 configuration directories
   file:
