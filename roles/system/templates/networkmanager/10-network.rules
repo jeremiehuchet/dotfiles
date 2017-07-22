@@ -1,5 +1,0 @@
-# {{ generated_tag }}
-
-SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="38:c9:86:40:22:0d", NAME="net0"
-SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="b2:47:02:63:f8:c8", NAME="net1"
-

@@ -10,10 +10,7 @@
   become: yes
 
 - template:
-    src: "networkmanager/{{ item }}"
-    dest: /etc/polkit-1/rules.d/{{ item  }}
+    src: "networkmanager/50-org.freedesktop.NetworkManager.rules"
+    dest: /etc/polkit-1/rules.d/
     mode: 0444
-  with_items:
-  - 10-network.rules
-  - 50-org.freedesktop.NetworkManager.rules
   become: yes

@@ -6,3 +6,12 @@
   with_items:
     - editor.sh
   become: yes
+
+- name: configure some udev rules
+  template:
+    src: udev/{{ item }}
+    dest: /etc/udev/rules.d/{{ item }}
+    mode: 0444
+  with_items:
+    - 10-network.rules
+  become: yes
