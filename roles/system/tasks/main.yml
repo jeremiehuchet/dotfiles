@@ -2,6 +2,7 @@
 - include: sound.yml
 - include: networkmanager.yml
 - include: powermanagement.yml
+- include: docker.yml
 - include: misc.yml
 
 - name: install system utilities
@@ -10,8 +11,6 @@
     state: present
   with_items:
   - dfc
-  - docker
-  - docker-compose
   - python-virtualenv
   - python2-virtualenv
   - htop

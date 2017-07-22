@@ -1,0 +1,16 @@
+- name: install docker tools
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+  - docker
+  - docker-compose
+  become: yes
+
+- name: enable docker socket
+  service:
+    name: docker.socket
+    state: started
+    enabled: yes
+  become: yes
+
