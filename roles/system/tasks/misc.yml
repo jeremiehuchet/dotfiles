@@ -14,4 +14,5 @@
     mode: 0444
   with_items:
     - 10-network.rules
+    - 70-u2f.rules
   become: yes
