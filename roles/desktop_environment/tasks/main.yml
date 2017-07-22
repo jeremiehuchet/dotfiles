@@ -15,4 +15,11 @@
   with_items:
   - terminator
   - network-manager-applet
+  - gimp
+  - go
+  - pgadmin4
+  - qemu
+  - vagrant
+  - virtualbox
+  - virtualbox-host-dkms
   become: yes

@@ -4,6 +4,8 @@
       [archlinuxfr]
       SigLevel = Never
       Server = http://repo.archlinux.fr/$arch
+      [multilib]
+      Include = /etc/pacman.d/mirrorlist
     marker: "# {mark} Ansible managed block"
   register: add_archlinuxfr_source
   become: yes

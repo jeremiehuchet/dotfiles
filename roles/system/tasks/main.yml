@@ -9,6 +9,9 @@
     name: "{{ item }}"
     state: present
   with_items:
+  - dfc
+  - docker
+  - docker-compose
   - python-virtualenv
   - python2-virtualenv
   - htop
@@ -38,7 +41,7 @@
     uid: 1000
     shell: /bin/zsh
     group: "{{ username }}"
-    groups: users,network,wheel,video,audio,power,users
+    groups: users,network,wheel,video,audio,power,docker
   become: yes
 
 - name: configure sudoers
