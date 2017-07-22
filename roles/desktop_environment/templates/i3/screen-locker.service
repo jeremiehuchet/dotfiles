@@ -1,0 +1,14 @@
+# {{ generated_tag }}
+
+[Unit]
+Description=Lock screen on suspend
+Before=sleep.target
+
+[Service]
+User={{ username }}
+Type=forking
+Environment=DISPLAY=:0
+ExecStart=/usr/bin/i3lock --fuzzy --show-failed-attempts --ignore-empty-password
+
+[Install]
+WantedBy=sleep.target

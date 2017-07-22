@@ -44,3 +44,16 @@
     dest: ~/.config/rofi/config
     mode: 0444
 
+- name: add service to lock screen on suspend
+  template:
+    src: i3/screen-locker.service
+    dest: /etc/systemd/system/
+    mode: 0444
+  become: yes
+
+- name: enable service to lock screen on suspend
+  service:
+    name: screen-locker
+    state: started
+    enabled: yes
+  become: yes
