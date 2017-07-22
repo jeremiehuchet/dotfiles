@@ -55,3 +55,10 @@
     regexp: "^#?HandlePowerKey="
     line: "HandlePowerKey=ignore"
   become: yes
+
+- name: tune sysctl
+  template:
+    src: sysctl/10-powermanagement.conf
+    dest: /etc/sysctl.d/
+    mode: 0555
+  become: yes
