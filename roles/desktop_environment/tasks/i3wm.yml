@@ -54,6 +54,5 @@
 - name: enable service to lock screen on suspend
   service:
     name: screen-locker
-    state: started
     enabled: yes
   become: yes
