@@ -6,6 +6,7 @@
   - cower
   - i3lock-blur
   - py3status
+  - python-pydbus
   - python-tzlocal
 
 - name: install i3 packages
