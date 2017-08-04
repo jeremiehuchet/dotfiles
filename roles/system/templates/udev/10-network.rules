@@ -1,6 +1,10 @@
 # {{ generated_tag }}
 
+#
 SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="38:c9:86:40:22:0d", NAME="net0"
+# wifi
 SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="ac:bc:32:d5:db:35", NAME="net1"
+# ethernet
 SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="b2:47:02:63:f8:c8", NAME="net2"
-
+# usb-tether
+SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="6e:c2:89:25:c9:fc", NAME="net3"
