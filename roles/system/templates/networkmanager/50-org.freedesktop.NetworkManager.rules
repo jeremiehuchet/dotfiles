@@ -1,4 +1,4 @@
-# {{ generated_tag }}
+// {{ generated_tag }}
 
 polkit.addRule(function(action, subject) {
   if (action.id.indexOf("org.freedesktop.NetworkManager.") == 0 && subject.isInGroup("network")) {
