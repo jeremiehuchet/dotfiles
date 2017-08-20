@@ -2,9 +2,11 @@
   template:
     src: profile/{{ item }}
     dest: /etc/profile.d/{{ item }}
-    mode: 0444
+    mode: 0555
   with_items:
     - editor.sh
+    - java.sh
+    - maven.sh
   become: yes
 
 - name: configure some udev rules
