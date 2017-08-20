@@ -1,8 +1,17 @@
 - name: install packages for HP 8600 printer
   package:
-    name: {{ item }}
+    name: "{{ item }}"
     state: present
   with_items:
   - cups
+  - gtk3-print-backends
   - hplip
+  - system-config-printer
+  become: yes
+
+- name: allow 'wheel' group members to administer printers
+  template:
+    src: polkit/49-allow-passwordless-printer-admin.rules
+    dest: /etc/polkit-1/rules.d/
+    mode: 0444
   become: yes
