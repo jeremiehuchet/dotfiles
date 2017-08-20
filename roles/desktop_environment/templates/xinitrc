@@ -1,4 +1,5 @@
 # {{ generated_tag }}
 
+[[ -f ~/.Xmodmap ]] && xmodmap ~/.Xmodmap
 xrandr --dpi {{ dpi }}
 exec i3
