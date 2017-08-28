@@ -1,2 +1,10 @@
+! {{ generated_tag }}
+
+! map '< >' symbols to the key on the right of Shift_L
 keycode  49 = less greater less greater bar brokenbar bar
+! map 'Delete' on the 'Power key'
 keycode 124 = Delete NoSymbol Delete
+! switch 'Alt Gr' and 'Super_R'
+keycode 108 = Super_R NoSymbol Super_R NoSymbol Super_R
+keycode 134 = ISO_Level3_Shift NoSymbol ISO_Level3_Shift NoSymbol ISO_Level3_Shift
+
