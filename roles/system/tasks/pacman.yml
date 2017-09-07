@@ -18,6 +18,9 @@
 - name: configure makepkg
   lineinfile:
     path: /etc/makepkg.conf
-    regexp: "^#?MAKEFLAGS="
-    line: 'MAKEFLAGS="-j8"'
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+  with_items:
+  - { regexp: "^#?MAKEFLAGS=", line: 'MAKEFLAGS="-j8"' }
+  - { regexp: "^#?PKGEXT=", line: "PKGEXT='.pkg.tar'" }
   become: yes
