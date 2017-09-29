@@ -20,6 +20,7 @@
   - openssh
   - yaourt
   - vim
+  - wireshark-cli
   - wget
   - zip
   - unzip
@@ -40,7 +41,7 @@
     uid: 1000
     shell: /bin/zsh
     group: "{{ username }}"
-    groups: users,network,wheel,video,audio,power,docker
+    groups: users,network,wheel,video,audio,power,docker,wireshark
   become: yes
 
 - name: configure sudoers
