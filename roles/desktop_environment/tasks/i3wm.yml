@@ -13,7 +13,6 @@
   package:
     name: "{{ item }}"
   with_items:
-  - perl-anyevent-i3 # required by per-workspace-layout.pl
   - i3-wm
   - python-pytz
   - rofi
@@ -27,12 +26,6 @@
   - ~/.config
   - ~/.config/i3
   - ~/.config/rofi
-
-- name: install per workspace layout script
-  template:
-    src: i3/per-workspace-layout.pl
-    dest: ~/.config/i3/per-workspace-layout.pl
-    mode: 0555
 
 - name: configure i3wm
   template:
