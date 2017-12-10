@@ -18,6 +18,7 @@
   - intel-ucode
   - iotop
   - openssh
+  - rsync
   - yaourt
   - vim
   - wireshark-cli
