@@ -9,3 +9,7 @@
   - desktop_environment
   - java
   - zsh
+  vars_prompt:
+  - name: "ansible_sudo_pass"
+    prompt: "Sudo password"
+    private: yes

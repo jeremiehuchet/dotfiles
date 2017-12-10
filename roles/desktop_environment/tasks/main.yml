@@ -1,7 +1,7 @@
-- include: xorg.yml
-- include: git.yml
-- include: i3wm.yml
-- include: intellij.yml
+- import_tasks: xorg.yml
+- import_tasks: git.yml
+- import_tasks: i3wm.yml
+- import_tasks: intellij.yml
 
 - template:
     src: xinitrc

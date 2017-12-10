@@ -1,9 +1,9 @@
-- include: pacman.yml
-- include: sound.yml
-- include: networkmanager.yml
-- include: powermanagement.yml
-- include: docker.yml
-- include: misc.yml
+- import_tasks: pacman.yml
+- import_tasks: sound.yml
+- import_tasks: networkmanager.yml
+- import_tasks: powermanagement.yml
+- import_tasks: docker.yml
+- import_tasks: misc.yml
 
 - name: install system utilities
   package:
