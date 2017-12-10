@@ -17,6 +17,7 @@
   - network-manager-applet
   - gimp
   - go
+  - poppler-glib # for pdf support in gimp
   - pgadmin4
   - qemu
   - vagrant
