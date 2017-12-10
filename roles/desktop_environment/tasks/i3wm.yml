@@ -1,10 +1,11 @@
 - name: check aur packages are installed
-  package:
+  aur_package:
     name: "{{ item }}"
   with_items:
   - acpi
   - cower
   - i3lock-blur
+  - i3-scrot
   - py3status
   - python-pydbus
   - python-tzlocal
