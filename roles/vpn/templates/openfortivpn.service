@@ -1,0 +1,13 @@
+# {{ generated_tag }}
+
+[Unit]
+Description=fortivpn client
+Documentation=https://github.com/adrienverge/openfortivpn
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+ExecStart=/usr/bin/openfortivpn
+
+[Install]
+WantedBy=multi-user.target

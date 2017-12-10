@@ -9,6 +9,7 @@
   - desktop_environment
   - java
   - zsh
+  - vpn
   vars_prompt:
   - name: "ansible_sudo_pass"
     prompt: "Sudo password"

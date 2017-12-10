@@ -1,0 +1,11 @@
+- name: AUR package openfortivpn
+  aur_package:
+    name: openfortivpn
+
+
+- name: install vpn systemd unit
+  template:
+    src: openfortivpn.service
+    dest: /etc/systemd/system/vpn.service
+    mode: 0444
+  become: yes
