@@ -3,6 +3,7 @@
 - import_tasks: networkmanager.yml
 - import_tasks: powermanagement.yml
 - import_tasks: docker.yml
+- import_tasks: ntp.yml
 - import_tasks: misc.yml
 
 - name: install system utilities
