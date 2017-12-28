@@ -2,4 +2,10 @@
 
 source /opt/ansible/bin/activate
 
-ansible-playbook configure.yml $*
+basedir=$(cd $(dirname $0) ; pwd)
+
+(
+  set -e
+  cd $basedir
+  ansible-playbook configure.yml $*
+)
