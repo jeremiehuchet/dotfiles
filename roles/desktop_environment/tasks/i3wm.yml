@@ -14,6 +14,7 @@
   package:
     name: "{{ item }}"
   with_items:
+  - dunst
   - i3-wm
   - python-pytz
   - rofi
@@ -27,6 +28,7 @@
   - ~/.config
   - ~/.config/i3
   - ~/.config/rofi
+  - ~/.config/dunst
 
 - name: configure i3wm
   template:
@@ -44,6 +46,12 @@
   template:
     src: i3/rofi.config
     dest: ~/.config/rofi/config
+    mode: 0444
+
+- name: configure dunst
+  template:
+    src: dunstrc
+    dest: ~/.config/dunst/dunstrc
     mode: 0444
 
 - name: add service to lock screen on suspend
