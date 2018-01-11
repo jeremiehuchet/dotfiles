@@ -18,6 +18,12 @@
   - i3-wm
   - python-pytz
   - rofi
+
+- name: install lock script
+  template:
+    src: lock.sh
+    dest: /usr/local/bin/lock
+    mode: 0555
   become: yes
 
 - name: create i3 configuration directories
