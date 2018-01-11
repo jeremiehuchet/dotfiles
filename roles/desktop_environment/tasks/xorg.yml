@@ -10,9 +10,9 @@
   - xorg-server-utils
   become: yes
 
-- name: check AUR package 'fft-font-awesome' is installed
+- name: check AUR package 'ttf-font-awesome' is installed
   stat:
-    path: /usr/share/fonts/TTF/fontawesome-webfont.ttf
+    path: /usr/share/licenses/ttf-font-awesome/LICENSE.txt
   register: fontawesome
   failed_when: fontawesome.stat.exists == False
 
