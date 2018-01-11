@@ -1,6 +1,6 @@
 - name: configure intellij command line shortcut
   file:
-    src: /opt/idea-intellij/bin/idea.sh
+    src: /opt/idea/bin/idea.sh
     dest: /usr/local/bin/idea
     state: link
   become: yes
