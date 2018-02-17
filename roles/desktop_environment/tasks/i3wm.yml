@@ -72,3 +72,10 @@
     name: screen-locker
     enabled: yes
   become: yes
+
+- name: install xrandr dualscreen tool
+  template:
+    src: dualscreen.py
+    dest: /usr/local/bin/dualscreen
+    mode: 0555
+  become: yes
