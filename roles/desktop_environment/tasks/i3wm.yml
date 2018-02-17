@@ -41,24 +41,32 @@
     src: i3/i3.config
     dest: ~/.config/i3/config
     mode: 0444
+  tags:
+  - config
 
 - name: configure py3status
   template:
     src: i3/i3status.conf
     dest: ~/.config/i3/i3status.conf
     mode: 0444
+  tags:
+  - config
 
 - name: configure rofi
   template:
     src: i3/rofi.config
     dest: ~/.config/rofi/config
     mode: 0444
+  tags:
+  - config
 
 - name: configure dunst
   template:
     src: dunstrc
     dest: ~/.config/dunst/dunstrc
     mode: 0444
+  tags:
+  - config
 
 - name: add service to lock screen on suspend
   template:
