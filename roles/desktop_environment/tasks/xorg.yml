@@ -7,7 +7,8 @@
   - libglvnd # dep for libgl
   - xf86-video-intel
   - xorg-server
-  - xorg-server-utils
+  - xorg-xbacklight
+  - xorg-xmodmap
   become: yes
 
 - name: check AUR package 'ttf-font-awesome' is installed
