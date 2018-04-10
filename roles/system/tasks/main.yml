@@ -43,7 +43,7 @@
     uid: 1000
     shell: /bin/zsh
     group: "{{ username }}"
-    groups: users,network,wheel,video,audio,power,docker,wireshark
+    groups: users,network,wheel,video,audio,power,docker,wireshark,sys
   become: yes
 
 - name: configure sudoers
