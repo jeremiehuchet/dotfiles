@@ -1,3 +1,4 @@
+- import_tasks: pyrandr.yml
 - import_tasks: xorg.yml
 - import_tasks: git.yml
 - import_tasks: i3wm.yml

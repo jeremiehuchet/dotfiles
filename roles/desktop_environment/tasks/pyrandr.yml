@@ -1,0 +1,21 @@
+- name: prepare pyrandr destdir
+  file:
+    path: /opt/pyrandr
+    owner: "{{ username }}"
+    group: users
+    state: directory
+    mode: 0755
+  become: yes
+
+- name: install pyrandr
+  git:
+    repo: git@github.com:jeremiehuchet/pyrandr.git
+    dest: /opt/pyrandr
+    version: master
+
+- name: add pyrandr to path
+  file:
+    src: /opt/pyrandr/pyrandr.py
+    dest: /usr/local/bin/pyrandr
+    state: link
+  become: yes
