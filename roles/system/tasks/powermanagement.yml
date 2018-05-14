@@ -1,33 +1,44 @@
-- name: install sensors reader
+- name: install power management tools
   package:
-    name: lm_sensors
+    name: "{{ item }}"
     state: present
+  with_items:
+  - lm_sensors
+  - thermald
   become: yes
 
-- name: check AUR package 'mbpfan-git' is installed
-  stat:
-    path: /usr/bin/mbpfan
-  register: mbpfan
-  failed_when: mbpfan.stat.exists == False
+- name: create thermald service unit override dir
+  file:
+    path: /etc/systemd/system/thermald.service.d
+    state: directory
+    mode: 0755
+  become: yes
 
-- name: configure fan control service
+- name: override thermald service unit
   template:
-    src: mbpfan.conf
-    dest: /etc/mbpfan.conf
+    src: thermald/thermald.service.override.conf
+    dest: /etc/systemd/system/thermald.service.d/override.conf
     mode: 0444
-  register: mbpfan
   become: yes
 
-- name: restart fan control service on config change
+- name: configure thermald
+  template:
+    src: thermald/thermal-conf.xml
+    dest: /etc/thermald/thermal-conf.xml
+    mode: 0444
+  register: thermald_conf
+  become: yes
+
+- name: restart thermald on config change
   service:
-    name: mbpfan
+    name: thermald
     state: restarted
-  when: mbpfan.changed
+  when: thermald_conf.changed
   become: yes
 
-- name: enable fan control service
+- name: enable thermaldservice
   service:
-    name: mbpfan
+    name: thermald
     state: started
     enabled: yes
   become: yes
