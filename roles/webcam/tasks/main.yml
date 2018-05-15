@@ -1,3 +1,3 @@
-- name: ensure AUR package 'bcwc-pcie-dkms' is installed
+- name: ensure AUR package 'bcwc-pcie-git' is installed
   aur_package:
-    name: bcwc-pcie-dkms
+    name: bcwc-pcie-git
