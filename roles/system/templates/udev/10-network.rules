@@ -7,5 +7,3 @@ SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="ac:bc:32:d5:db:35", NAME="wirel
 # ethernet
 SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="b2:47:02:63:f8:c8", NAME="thunderbolt"
 SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="00:0e:c6:fe:5a:0c", NAME="aukey"
-# usb-tether
-SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="6e:c2:89:25:c9:fc", NAME="motog5"
