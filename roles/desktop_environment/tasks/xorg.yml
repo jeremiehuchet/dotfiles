@@ -11,12 +11,6 @@
   - xorg-xmodmap
   become: yes
 
-- name: check AUR package 'ttf-font-awesome' is installed
-  stat:
-    path: /usr/share/licenses/ttf-font-awesome/LICENSE.txt
-  register: fontawesome
-  failed_when: fontawesome.stat.exists == False
-
 - name: install fonts
   package:
     name: "{{ item }}"
@@ -28,6 +22,7 @@
   - font-bh-ttf
   - font-bitstream-speedo
   - gsfonts
+  - otf-font-awesome
   - sdl_ttf
   - ttf-bitstream-vera
   - ttf-cheapskate
@@ -58,3 +53,4 @@
     src: xorg/Xresources
     dest: ~/.Xresources
     mode: 0444
+
