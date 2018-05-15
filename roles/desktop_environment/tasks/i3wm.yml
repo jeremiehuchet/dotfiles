@@ -81,3 +81,9 @@
     enabled: yes
   become: yes
 
+- name: authorize user to manage daemons
+  template:
+    src: i3/57-allow-passwordless-daemon-management.rules
+    dest: /etc/polkit-1/rules.d/57-allow-passwordless-daemon-management.rules
+    mode: 0444
+  become: yes
