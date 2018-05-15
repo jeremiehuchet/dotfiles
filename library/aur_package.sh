@@ -13,10 +13,20 @@ if [ $rc -eq 0 ] ; then
 }
 EOF
 else
-   cat - <<EOF
+   yaourt --noconfirm -Sy $name
+   if [ $? -eq 0 ] ; then
+     cat - <<EOF
+{
+  "changed": true,
+  "msg": "package $name has been installed"
+}
+EOF
+   else
+     cat - <<EOF
 {
   "failed": true,
   "msg": "package $name is missing, install with 'yaourt -Sy $name'"
 }
 EOF
+  fi
 fi
