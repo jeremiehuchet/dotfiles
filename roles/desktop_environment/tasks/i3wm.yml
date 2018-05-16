@@ -52,6 +52,14 @@
   tags:
   - config
 
+- name: install custom scripts for py3status
+  template:
+    src: i3/fan_status.sh
+    dest: ~/.config/i3/fan_status.sh
+    mode: 0555
+  tags:
+  - config
+
 - name: configure rofi
   template:
     src: i3/rofi.config
