@@ -5,14 +5,20 @@
   become: yes
 
 - name: install oracle jdk8
-  shell: 'curl -L -H "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131-linux-x64.tar.gz | tar -zx -C /opt'
+  shell: 'curl -L -H "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u171-b11/512cd62ec5174c3487ac17c61aaa89e8/jdk-8u171-linux-x64.tar.gz | tar -zx -C /opt'
   args:
-    creates: /opt/jdk1.8.0_131/bin/java
+    creates: /opt/jdk1.8.0_171/bin/java
+  become: yes
+
+- name: install oracle jdk10
+  shell: 'curl -L -H "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/10.0.1+10/fb4372174a714e6b8c52526dc134031e/jdk-10.0.1_linux-x64_bin.tar.gz | tar -zx -C /opt'
+  args:
+    creates: /opt/jdk-10.0.1/bin/java
   become: yes
 
 - name: configure default jdk
   file:
-    src: /opt/jdk1.8.0_131
+    src: /opt/jdk-10.0.1
     dest: /opt/jdk
     state: link
   become: yes
