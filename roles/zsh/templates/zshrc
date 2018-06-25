@@ -10,7 +10,20 @@ ZSH_THEME="agnoster"
 CASE_SENSITIVE="true"
 DISABLE_AUTO_UPDATE="true"
 
-plugins=(git git-extras gradle httpie mvn npm pip vagrant)
+plugins=(
+  colored-man-pages
+  colorize
+  git
+  git-extras
+  gradle
+  httpie
+  mvn
+  npm
+  nvm
+  pip
+  rvm
+  vagrant
+)
 
 ZSH_CACHE_DIR=$HOME/.oh-my-zsh-cache
 if [[ ! -d $ZSH_CACHE_DIR ]]; then
@@ -18,5 +31,15 @@ if [[ ! -d $ZSH_CACHE_DIR ]]; then
 fi
 
 source $ZSH/oh-my-zsh.sh
+source ~/.nvm/nvm.sh
+source ~/.rvm/scripts/rvm
 
 alias ansible-activate=". /opt/ansible/bin/activate"
+
+# enable direnv
+eval "$(direnv hook zsh)"
+
+# enable zsh plugins
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+# this plugin must be the last to be sourced
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

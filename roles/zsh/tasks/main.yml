@@ -1,16 +1,36 @@
-- name: check AUR package 'oh-my-zsh-git' is installed
-  stat:
-    path: /usr/share/oh-my-zsh/zshrc
-  register: ohmyzshrc
-  failed_when: ohmyzshrc.stat.exists == False
+- name: install packages
+  aur_package:
+    name: "{{ item }}"
+  with_items:
+  - oh-my-zsh-git
+  - direnv
 
 - name: install powerline fonts
   package:
     name: powerline-fonts
     state: present
 
+- name: install oh-my-zsh plugins dependencies
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+  - pygmentize # required by plugin colorize
+  become: yes
+
+- name: install zsh plugins
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+  - zsh-autosuggestions
+  - zsh-syntax-highlighting
+  become: yes
+
 - name: configure zsh
   template:
     src: zshrc
     dest: ~/.zshrc
     mode: 0444
+  tags:
+  - config
