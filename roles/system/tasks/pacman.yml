@@ -1,18 +1,15 @@
 - blockinfile:
     path: /etc/pacman.conf
     block: |
-      [archlinuxfr]
-      SigLevel = Never
-      Server = http://repo.archlinux.fr/$arch
       [multilib]
       Include = /etc/pacman.d/mirrorlist
     marker: "# {mark} Ansible managed block"
-  register: add_archlinuxfr_source
+  register: enable_multilib_source
   become: yes
 
 - package:
     update_cache: yes
-  when: add_archlinuxfr_source.changed
+  when: enable_multilib_source.changed
   become: yes
 
 - name: configure makepkg
@@ -24,3 +21,8 @@
   - { regexp: "^#?MAKEFLAGS=", line: 'MAKEFLAGS="-j8"' }
   - { regexp: "^#?PKGEXT=", line: "PKGEXT='.pkg.tar'" }
   become: yes
+
+- name: is aurman installed? install it manually if it is missing
+  command: which aurman
+  changed_when: false
+

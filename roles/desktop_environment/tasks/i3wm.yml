@@ -18,6 +18,7 @@
   - i3-wm
   - python-pytz
   - rofi
+  become: yes
 
 - name: install lock script
   template:

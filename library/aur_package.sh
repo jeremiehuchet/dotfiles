@@ -13,7 +13,7 @@ if [ $rc -eq 0 ] ; then
 }
 EOF
 else
-   yaourt --noconfirm -Sy $name
+   aurman --noconfirm -Sy $name
    if [ $? -eq 0 ] ; then
      cat - <<EOF
 {
@@ -25,7 +25,7 @@ EOF
      cat - <<EOF
 {
   "failed": true,
-  "msg": "package $name is missing, install with 'yaourt -Sy $name'"
+  "msg": "package $name is missing, install with 'aurman -Sy $name'"
 }
 EOF
   fi
