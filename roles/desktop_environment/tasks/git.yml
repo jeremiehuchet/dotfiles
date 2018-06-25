@@ -7,6 +7,9 @@
   become: yes
 
 - template:
-    src: git/gitconfig
-    dest: ~/.gitconfig
+    src: git/{{ item }}
+    dest: ~/.{{ item }}
     mode: 0444
+  with_items:
+  - gitconfig
+  - gitignore
