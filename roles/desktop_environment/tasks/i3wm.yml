@@ -3,6 +3,7 @@
     name: "{{ item }}"
   with_items:
   - acpi
+  - pacman-contrib
   - cower
   - i3lock-blur
   - i3-scrot
