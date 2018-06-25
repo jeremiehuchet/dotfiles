@@ -1,4 +1,5 @@
-- blockinfile:
+- name: enable multilib repository
+  blockinfile:
     path: /etc/pacman.conf
     block: |
       [multilib]
@@ -7,7 +8,19 @@
   register: enable_multilib_source
   become: yes
 
-- package:
+- name: enable pacman colors
+  lineinfile:
+    path: /etc/pacman.conf
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+  with_items:
+  - { regexp: "^#?Color", line: "Color" }
+  - { regexp: "^#?TotalDownload", line: "TotalDownload" }
+  - { regexp: "^#?VerbosePkgLists", line: "VerbosePkgLists" }
+  become: yes
+
+- name: update package cache
+  package:
     update_cache: yes
   when: enable_multilib_source.changed
   become: yes
