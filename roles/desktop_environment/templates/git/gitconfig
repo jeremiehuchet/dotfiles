@@ -8,6 +8,11 @@
 	ci = commit
 	st = status
 	glog = log --graph --oneline --decorate --all
+	bprune = "!f() { \
+			git branch --merged ${1-master} \
+				| grep -v " ${1-master}$" \
+				| xargs -r git branch -d; \
+		}; f"
 [gui]
 	fontui = -family \"DejaVu Sans\" -size 12 -weight normal -slant roman -underline 0 -overstrike 0
 	fontdiff = -family \"DejaVu Sans Mono\" -size 10 -weight normal -slant roman -underline 0 -overstrike 0
