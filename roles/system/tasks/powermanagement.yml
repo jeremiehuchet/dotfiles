@@ -4,6 +4,43 @@
     state: present
   with_items:
   - lm_sensors
+  - thermald
+  become: yes
+
+- name: create thermald service unit override dir
+  file:
+    path: /etc/systemd/system/thermald.service.d
+    state: directory
+    mode: 0755
+  become: yes
+
+- name: override thermald service unit
+  template:
+    src: thermald/thermald.service.override.conf
+    dest: /etc/systemd/system/thermald.service.d/override.conf
+    mode: 0444
+  become: yes
+
+- name: configure thermald
+  template:
+    src: thermald/thermal-conf.xml
+    dest: /etc/thermald/thermal-conf.xml
+    mode: 0444
+  register: thermald_conf
+  become: yes
+
+- name: restart thermald on config change
+  service:
+    name: thermald
+    state: restarted
+  when: thermald_conf.changed
+  become: yes
+
+- name: enable thermaldservice
+  service:
+    name: thermald
+    state: started
+    enabled: yes
   become: yes
 
 - name: install script used by udev rules to disable bluetooth and card reader
