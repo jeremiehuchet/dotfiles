@@ -1,15 +1,41 @@
+<?xml version="1.0"?>
 <!-- {{ generated_tag }} -->
 <ThermalConfiguration>
   <Platform>
-    <Name>Override default passive</Name>
+    <Name>Quiet</Name>
     <ProductName>*</ProductName>
+    <Preference>QUIET</Preference>
     <ThermalZones>
+      <ThermalZone>
+        <Type>limits</Type>
+        <TripPoints>
+          <TripPoint>
+            <SensorType>x86_pkg_temp</SensorType>
+            <Temperature>102000</Temperature>
+            <Type>critical</Type>
+          </TripPoint>
+        </TripPoints>
+      </ThermalZone>
       <ThermalZone>
         <Type>cpu</Type>
         <TripPoints>
           <TripPoint>
-            <Temperature>78000</Temperature>
-            <type>passive</type>
+            <SensorType>x86_pkg_temp</SensorType>
+            <Temperature>83000</Temperature>
+            <Type>passive</Type>
+            <ControlType>SEQUENTIAL</ControlType>
+            <CoolingDevice>
+              <Type>rapl_controller</Type>
+            </CoolingDevice>
+            <CoolingDevice>
+              <Type>intel_pstate</Type>
+            </CoolingDevice>
+            <CoolingDevice>
+              <Type>intel_powerclamp</Type>
+            </CoolingDevice>
+            <CoolingDevice>
+              <Type>Processor</Type>
+            </CoolingDevice>
           </TripPoint>
         </TripPoints>
       </ThermalZone>
@@ -18,18 +44,26 @@
         <TripPoints>
           <TripPoint>
             <SensorType>x86_pkg_temp</SensorType>
-            <Temperature>78000</Temperature>
-            <type>active</type>
+            <Temperature>65000</Temperature>
+            <Type>passive</Type>
             <ControlType>PARALLEL</ControlType>
             <CoolingDevice>
-              <Type>macbook_left_fan</Type>
-              <Influence>50</Influence>
-              <SamplingPeriod>12</SamplingPeriod>
+              <Type>quiet_macbook_left_fan</Type>
             </CoolingDevice>
             <CoolingDevice>
-              <Type>macbook_right_fan</Type>
-              <Influence>50</Influence>
-              <SamplingPeriod>12</SamplingPeriod>
+              <Type>quiet_macbook_right_fan</Type>
+            </CoolingDevice>
+          </TripPoint>
+          <TripPoint>
+            <SensorType>x86_pkg_temp</SensorType>
+            <Temperature>90000</Temperature>
+            <Type>passive</Type>
+            <ControlType>PARALLEL</ControlType>
+            <CoolingDevice>
+              <Type>noisy_macbook_left_fan</Type>
+            </CoolingDevice>
+            <CoolingDevice>
+              <Type>noisy_macbook_right_fan</Type>
             </CoolingDevice>
           </TripPoint>
         </TripPoints>
@@ -37,22 +71,40 @@
     </ThermalZones>
     <CoolingDevices>
       <CoolingDevice>
-        <Type>macbook_left_fan</Type>
-	<Path>/sys/devices/platform/applesmc.768/fan1_output</Path>
-	<MinState>2160</MinState>
-	<IncDecStep>500</IncDecStep>
-	<ReadBack>0</ReadBack>
-	<MaxState>6156</MaxState>
-	<DebouncePeriod>5</DebouncePeriod>
+        <Type>quiet_macbook_left_fan</Type>
+        <Path>/sys/devices/platform/applesmc.768/fan1_output</Path>
+        <MinState>2160</MinState>
+        <IncDecStep>100</IncDecStep>
+        <ReadBack>0</ReadBack>
+        <MaxState>3600</MaxState>
+        <DebouncePeriod>5</DebouncePeriod>
       </CoolingDevice>
       <CoolingDevice>
-        <Type>macbook_right_fan</Type>
-	<Path>/sys/devices/platform/applesmc.768/fan2_output</Path>
-	<MinState>2000</MinState>
-	<IncDecStep>500</IncDecStep>
-	<ReadBack>0</ReadBack>
-	<MaxState>5700</MaxState>
-	<DebouncePeriod>5</DebouncePeriod>
+        <Type>quiet_macbook_right_fan</Type>
+        <Path>/sys/devices/platform/applesmc.768/fan2_output</Path>
+        <MinState>2000</MinState>
+        <IncDecStep>100</IncDecStep>
+        <ReadBack>0</ReadBack>
+        <MaxState>3600</MaxState>
+        <DebouncePeriod>5</DebouncePeriod>
+      </CoolingDevice>
+      <CoolingDevice>
+        <Type>noisy_macbook_left_fan</Type>
+        <Path>/sys/devices/platform/applesmc.768/fan1_output</Path>
+        <MinState>5000</MinState>
+        <IncDecStep>500</IncDecStep>
+        <ReadBack>0</ReadBack>
+        <MaxState>6156</MaxState>
+        <DebouncePeriod>5</DebouncePeriod>
+      </CoolingDevice>
+      <CoolingDevice>
+        <Type>noisy_macbook_right_fan</Type>
+        <Path>/sys/devices/platform/applesmc.768/fan2_output</Path>
+        <MinState>5000</MinState>
+        <IncDecStep>500</IncDecStep>
+        <ReadBack>0</ReadBack>
+        <MaxState>5700</MaxState>
+        <DebouncePeriod>5</DebouncePeriod>
       </CoolingDevice>
     </CoolingDevices>
   </Platform>
