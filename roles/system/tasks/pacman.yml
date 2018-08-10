@@ -17,6 +17,7 @@
   - { regexp: "^#?Color", line: "Color" }
   - { regexp: "^#?TotalDownload", line: "TotalDownload" }
   - { regexp: "^#?VerbosePkgLists", line: "VerbosePkgLists" }
+  - { regexp: "^#?IgnorePkg", line: "IgnorePkg = linux-lts linux-lts-headers" }
   become: yes
 
 - name: update package cache
