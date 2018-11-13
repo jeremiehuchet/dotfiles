@@ -56,6 +56,18 @@
           </TripPoint>
           <TripPoint>
             <SensorType>x86_pkg_temp</SensorType>
+            <Temperature>80000</Temperature>
+            <Type>passive</Type>
+            <ControlType>PARALLEL</ControlType>
+            <CoolingDevice>
+              <Type>affordable_macbook_left_fan</Type>
+            </CoolingDevice>
+            <CoolingDevice>
+              <Type>affordable_macbook_right_fan</Type>
+            </CoolingDevice>
+          </TripPoint>
+          <TripPoint>
+            <SensorType>x86_pkg_temp</SensorType>
             <Temperature>90000</Temperature>
             <Type>passive</Type>
             <ControlType>PARALLEL</ControlType>
@@ -89,13 +101,31 @@
         <DebouncePeriod>5</DebouncePeriod>
       </CoolingDevice>
       <CoolingDevice>
+        <Type>affordable_macbook_left_fan</Type>
+        <Path>/sys/devices/platform/applesmc.768/fan1_output</Path>
+        <MinState>3700</MinState>
+        <IncDecStep>500</IncDecStep>
+        <ReadBack>0</ReadBack>
+        <MaxState>4900</MaxState>
+        <DebouncePeriod>8</DebouncePeriod>
+      </CoolingDevice>
+      <CoolingDevice>
+        <Type>affordable_macbook_right_fan</Type>
+        <Path>/sys/devices/platform/applesmc.768/fan2_output</Path>
+        <MinState>3600</MinState>
+        <IncDecStep>500</IncDecStep>
+        <ReadBack>0</ReadBack>
+        <MaxState>4900</MaxState>
+        <DebouncePeriod>8</DebouncePeriod>
+      </CoolingDevice>
+      <CoolingDevice>
         <Type>noisy_macbook_left_fan</Type>
         <Path>/sys/devices/platform/applesmc.768/fan1_output</Path>
         <MinState>5000</MinState>
         <IncDecStep>500</IncDecStep>
         <ReadBack>0</ReadBack>
         <MaxState>6156</MaxState>
-        <DebouncePeriod>5</DebouncePeriod>
+        <DebouncePeriod>8</DebouncePeriod>
       </CoolingDevice>
       <CoolingDevice>
         <Type>noisy_macbook_right_fan</Type>
@@ -104,7 +134,7 @@
         <IncDecStep>500</IncDecStep>
         <ReadBack>0</ReadBack>
         <MaxState>5700</MaxState>
-        <DebouncePeriod>5</DebouncePeriod>
+        <DebouncePeriod>8</DebouncePeriod>
       </CoolingDevice>
     </CoolingDevices>
   </Platform>
