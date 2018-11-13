@@ -18,6 +18,7 @@
   - httpie
   - intel-ucode
   - iotop
+  - ntfs-3g
   - openssh
   - rsync
   - vim
