@@ -4,12 +4,11 @@
   with_items:
   - acpi
   - pacman-contrib
-  - cower
   - i3lock-blur
   - i3-scrot
   - py3status
-  - python-pydbus
   - python-tzlocal
+  - yay
 
 - name: install i3 packages
   package:

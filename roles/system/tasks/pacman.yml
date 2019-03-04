@@ -36,7 +36,7 @@
   - { regexp: "^#?PKGEXT=", line: "PKGEXT='.pkg.tar'" }
   become: yes
 
-- name: is aurman installed? install it manually if it is missing
-  command: which aurman
+- name: is yay installed? install it manually if it is missing
+  command: which yay
   changed_when: false
 
